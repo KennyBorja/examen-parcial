@@ -101,6 +101,7 @@ public:
     }
 }
 
+// kenny borja
     static std::string guardarRegDesdeCsv(std::ifstream& archivo, const std::string& esquema) {
         std::string fila = esquema;
         
