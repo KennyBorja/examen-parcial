@@ -6,7 +6,7 @@
 #include <map>
 #include "Frame.h"
 
-/*Sebastian Andres */
+/*jose paredes | kenny borja */
 
 using namespace std;
 
@@ -40,8 +40,8 @@ class BufferPool {
     void setHistory(int pageID);                               /* Guardar el historial de las paginas */
     void incrementHistory();                                   /* Incrementar el historial de las paginas */
     void LRU();                                                /* El LRU */
-    void Clock();                                              /* El Clock */
 
+    void Clock();                                              /* El Clock */
     void policy();                                             /* La politica de reemplazo */
     bool isFrameDirty(int pageID);
     
