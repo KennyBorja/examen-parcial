@@ -15,7 +15,7 @@
 
 
 using namespace std;
-
+// kenny borja
 //lee y extrae rutas
 class FileManager {
 public:
@@ -219,6 +219,7 @@ public:
 
 };
 
+//kenny borja | jose paredes
 //crea disco carpetas y txt
 class SimuladorDisco
 {
@@ -462,7 +463,7 @@ public:
 
 };
 
-
+// kenny borja | jose paredes
 
 class DatabaseManagementSystem {
 private:
@@ -563,6 +564,8 @@ public:
     }
 };
 
+
+// jose paredes
 
 
 class Menu
