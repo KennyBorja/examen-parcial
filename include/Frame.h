@@ -5,6 +5,8 @@
 #include <queue>
 #include <iostream>
 
+// jose paredes
+
 class Frame {
    private:
     int frameID;
