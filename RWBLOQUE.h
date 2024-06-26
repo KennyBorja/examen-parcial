@@ -172,7 +172,7 @@ static string bloqueConEspacio(int pesoRegistro, string const &nombreTabla)
         getline(ss, pesoActual, '-');
         return stoi(pesoActual);
     }
-
+//jose paredes
     static void ActualizarBloques(int Bloque,int totalPeso )
     {
 
@@ -207,7 +207,7 @@ static string bloqueConEspacio(int pesoRegistro, string const &nombreTabla)
         std::rename("temp.txt", "bloques.txt");
 
     }
-
+//jose paredes
     static void ActualizarBloque(int blockID, string Ruta, string Cabecera, string content)
 {
      // Definir la ruta del archivo en la subcarpeta "disk/bloques/"
@@ -225,8 +225,8 @@ static string bloqueConEspacio(int pesoRegistro, string const &nombreTabla)
     archivoSalida << content << endl;
     archivoSalida.close();
 }
-
-    static void ActializarSectores(string rutas, string content, int tamanioreg, int numreg)
+//kenny borja
+     static void ActializarSectores(const std::string& rutas, const std::string& content, int tamanioreg, int numreg)
     {
         vector <string> rutasVector;
         istringstream ss(rutas);
@@ -238,12 +238,16 @@ static string bloqueConEspacio(int pesoRegistro, string const &nombreTabla)
 
         string path = "disk/";
         int cantSector = rutasVector.size();
-        int rept = 0;
 
-        for(int i = 0; i < numreg; i++)
+        int regXsector = numreg/cantSector;
+        int resto=numreg%rutasVector.size();
+        int nosobrepasarResto=0;
+        int pos=0;
+
+        for(int i = 0; i < cantSector; i++)
         {
             
-            istringstream ss(rutasVector[0]);
+            istringstream ss(rutasVector[i]);
             string token;
             getline(ss, token, '-');
             path += "plato" + token + "/";
@@ -255,22 +259,45 @@ static string bloqueConEspacio(int pesoRegistro, string const &nombreTabla)
             path += "sector" + token + ".txt";
 
 
-            ifstream archivo(path);
-            string linea;
+            std::ofstream archivo(path, std::ios_base::trunc);
 
-            for (std::size_t i = 0; i < content.size(); i += tamanioreg) {
-                 reg = (content.substr(i, tamanioreg));
+
+            if(regXsector==0&&resto>0)
+            {
+                
+                    string registro = content.substr(pos,regXsector * tamanioreg);
+                    archivo << registro << std::endl;
+                    pos+=regXsector * tamanioreg;
+                    resto--;
+                
+            }
+
+            else if(regXsector>0)
+            {
+                if(resto>0)
+                {
+                    string registro = content.substr(pos,regXsector * tamanioreg+tamanioreg);
+                    archivo << registro << std::endl;
+                    pos+=regXsector * tamanioreg+tamanioreg;
+                    resto--;
+                }
+                else
+                {
+                    string registro = content.substr(pos,regXsector * tamanioreg);
+                    archivo << registro << std::endl;
+                    pos+=regXsector * tamanioreg;
+                }
             }
 
 
-            string reg;
-            int peso = 0;
+            else if (resto==0){
+                break;
+            }
 
+            archivo.close();
+            path = "disk/";
         }
-
-       
     }
-
 
 };
 
