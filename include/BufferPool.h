@@ -6,7 +6,7 @@
 #include <map>
 #include "Frame.h"
 
-/*Sebastian Andres */
+/*Jose Paredes */
 
 using namespace std;
 
