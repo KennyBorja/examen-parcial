@@ -1,5 +1,6 @@
-#include "../include/BufferManager.h"
+/*Kenny Borja | Jose Paredes*/
 
+#include "../include/BufferManager.h"
 #include "../include/Frame.h"
 #include "../include/Page.h"
 
