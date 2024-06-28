@@ -1,8 +1,8 @@
-/*Kenny Borja | Jose Paredes*/
-
 #include "../include/BufferManager.h"
 #include "../include/Frame.h"
 #include "../include/Page.h"
+
+/*Kenny Borja | Jose Paredes*/
 
 // configura LRU (Least Recently Used) con el número total de frames.
 
