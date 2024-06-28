@@ -293,6 +293,8 @@ void BufferPool::Clock() {
                 {
                     diskSpaceManager disk;
                     disk.savePageInBlock(frames[clock_pointer].getPage());
+                    while(frames[clock_pointer]. getPinCount() > 0) //Para mostrar la cola
+                        freeFrameQueue(clock_pointer); 
 
                     freeFrame(clock_pointer);
                     clock_pointer = (clock_pointer + 1) % numFrames;
@@ -319,5 +321,22 @@ bool BufferPool::isFrameDirty(int pageID)
         {
             return frames[i].isDirty();
         }
+    }
+}
+
+void BufferPool::freeFrameQueue(int frameID) 
+{
+    if (frameID >= 0 && frameID < numFrames)
+    {
+
+        frames[frameID].freeDirtyFlag();
+        frames[frameID].decrementPinCount();
+        cout << "PinCount Frame " << frameID << "es:" <<frames[frameID].getPinCount() << endl;
+        cout << "Dirty bit Frame " << frameID << "es:" <<frames[frameID].isDirtyQueue ()<< endl;
+
+    }
+    else
+    {
+        cout << "Frame ID fuera de rango." << endl;
     }
 }
