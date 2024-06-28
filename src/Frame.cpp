@@ -66,3 +66,18 @@ void Frame::setPinned(bool pin) {
 bool Frame::isPinned() {
     return pinned;
 }
+
+
+// Getter for dirty flag Queue
+bool Frame::isDirtyQueue() const
+{
+    if (dirty_flag.front() == true)
+    {
+        return true; // Si encontramos un 'true', devolvemos 'true'
+    }
+    else
+    {
+        return false;   // Si no encontramos ningún 'true', devolvemos 'false'
+    }
+}
+
