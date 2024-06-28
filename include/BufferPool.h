@@ -45,4 +45,6 @@ class BufferPool {
     void policy();                                             /* La politica de reemplazo */
     bool isFrameDirty(int pageID);
     
+    void freeFrameQueue(int frameID);                          /*Liberar la cola imprimiendo su estado en cada pop*/
+
 };
