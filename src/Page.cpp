@@ -2,8 +2,6 @@
 #include <fstream>
 #include <iostream>
 
-//Borja Kenny
-
 Page::Page() : Size(0), Name(""), pageID(-1) {
 }
 
@@ -30,6 +28,14 @@ string Page::getCabeceraSpaciosPage() {
 
 string Page::getContent() {
   return content;
+}
+
+int Page::getNumRegistros() {
+  return numRegistros;
+}
+
+int Page::getTamanio() {
+  return tamanio;
 }
 
 // todo: metodos setter/////////////////////////////////////////////////////////////////////

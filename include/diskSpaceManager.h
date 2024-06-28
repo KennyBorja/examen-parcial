@@ -4,11 +4,10 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include "Page.h" 
+#include "Page.h"  // Asegúrate de tener Page.h en el mismo directorio o ajusta el include según corresponda
 #include "../RWBLOQUE.h"
-using namespace std;
 
-// jose paredes
+using namespace std;
 
 class diskSpaceManager {
 public:

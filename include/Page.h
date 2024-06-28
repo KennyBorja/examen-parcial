@@ -7,8 +7,6 @@
 
 using namespace std;
 
-// kenny borja
-
 class Page {
 private:
 
@@ -39,6 +37,8 @@ public:
   string getName();
   string getCabeceraSpaciosPage();
   string getContent();
+  int getNumRegistros();
+  int getTamanio();
 
   
 

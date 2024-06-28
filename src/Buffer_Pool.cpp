@@ -58,7 +58,7 @@ void BufferPool::modifyPinInExistingFrame(int pageID, char flag) {
                 frames[i].setPinned(false);
             } else {
                 cout << "Flag no valido" << endl;
-                
+
             }
         }
     }
@@ -148,8 +148,8 @@ void BufferPool::freeFrame(int frameID) {
 
 int BufferPool::findFreeFrame() {
     for (auto it = page_table.begin(); it != page_table.end(); ++it) {
-        if (it->second == -1) 
-        {   
+        if (it->second == -1)
+        {
             use_bits[it->first] = true; // Marcar el bit de uso
             return it->first;
         }
@@ -197,10 +197,10 @@ void BufferPool::printTableFrame() {
          << setw(10) << "Page Id" << "\t"
          << setw(10) << "Dirty Bit" << "\t"
          << setw(10) << "Pin Count" << "\t"
-         << setw(10) << "Last Used" <<"\t" 
+         << setw(10) << "Last Used" <<"\t"
          << setw(10) << "bit" <<"\t"
          << setw(10) << "pinned" << endl;
-         
+
 
     for (int i = 0; i < frames.size(); i++) {
         cout << setw(10) << frames[i].getframeID() << "\t"
@@ -212,7 +212,7 @@ void BufferPool::printTableFrame() {
              << setw(10) << frames[i].isPinned() << endl;
     }
 
-    
+
 }
 
 void BufferPool::setHistory(int pageID) {
@@ -261,7 +261,7 @@ void BufferPool::Clock() {
              clock_pointer = (clock_pointer + 1) % numFrames;
             continue;
         }
-        
+
         if (!use_bits[clock_pointer] && frames[clock_pointer].getPinCount() == 0) {
             // Si el bit de uso es 0 y el pin count es 0, reemplazar este frame
             freeFrame(clock_pointer);
@@ -287,14 +287,16 @@ void BufferPool::Clock() {
              char response;
                 cout << "El frame " << clock_pointer << " tiene un pin count mayor a 0. ¿Desea liberarlo? (y/n): ";
                 cin>>response;
-                
+
 
                 if(response == 'y')
                 {
                     diskSpaceManager disk;
                     disk.savePageInBlock(frames[clock_pointer].getPage());
-                    while(frames[clock_pointer]. getPinCount() > 0) //Para mostrar la cola
-                        freeFrameQueue(clock_pointer); 
+
+                      while(frames[clock_pointer]. getPinCount() > 0) //AGREGUE ESTO
+                        freeFrameQueue(clock_pointer);  //AGRUEGUE ESTO
+
 
                     freeFrame(clock_pointer);
                     clock_pointer = (clock_pointer + 1) % numFrames;
@@ -308,7 +310,7 @@ void BufferPool::Clock() {
 
         }
     }
-    
+
     cout << "--salida-----"<<clock_pointer<< "------------" << endl;
 }
 
@@ -324,10 +326,9 @@ bool BufferPool::isFrameDirty(int pageID)
     }
 }
 
-void BufferPool::freeFrameQueue(int frameID) 
-{
-    if (frameID >= 0 && frameID < numFrames)
-    {
+
+void BufferPool::freeFrameQueue(int frameID) {
+    if (frameID >= 0 && frameID < numFrames) {
 
         frames[frameID].freeDirtyFlag();
         frames[frameID].decrementPinCount();

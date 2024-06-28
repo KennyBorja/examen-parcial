@@ -6,7 +6,7 @@
 #include <map>
 #include "Frame.h"
 
-/*jose paredes | kenny borja */
+/*Sebastian Andres */
 
 using namespace std;
 
@@ -40,11 +40,10 @@ class BufferPool {
     void setHistory(int pageID);                               /* Guardar el historial de las paginas */
     void incrementHistory();                                   /* Incrementar el historial de las paginas */
     void LRU();                                                /* El LRU */
-
     void Clock();                                              /* El Clock */
+
     void policy();                                             /* La politica de reemplazo */
     bool isFrameDirty(int pageID);
+    void freeFrameQueue(int frameID);
     
-    void freeFrameQueue(int frameID);                          /*Liberar la cola imprimiendo su estado en cada pop*/
-
 };

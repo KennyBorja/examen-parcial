@@ -5,8 +5,6 @@
 #include <queue>
 #include <iostream>
 
-// jose paredes
-
 class Frame {
    private:
     int frameID;
@@ -14,7 +12,7 @@ class Frame {
     int pinCount;
     Page page;
     bool pinned;
-    
+
    public:
     // Constructor
     Frame(int frameID);
@@ -23,6 +21,7 @@ class Frame {
     // Getters
     int getframeID();
     bool isDirty () const;
+    bool isDirtyQueue () const;
     int getPinCount();
 
 

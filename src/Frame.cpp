@@ -67,7 +67,6 @@ bool Frame::isPinned() {
     return pinned;
 }
 
-
 // Getter for dirty flag Queue
 bool Frame::isDirtyQueue() const
 {
@@ -80,4 +79,3 @@ bool Frame::isDirtyQueue() const
         return false;   // Si no encontramos ningún 'true', devolvemos 'false'
     }
 }
-

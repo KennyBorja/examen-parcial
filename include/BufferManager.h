@@ -1,7 +1,7 @@
 #ifndef BUFFERMANAGER_H
 #define BUFFERMANAGER_H
 
-/*Jose Paredes*/
+/*Erick Malcoaccha | Jose Paredes*/
 
 #include <iostream>
 

@@ -30,6 +30,7 @@ void diskSpaceManager::savePageInBlock(Page page) {
     cout<<"================"<<page.getSize()<<endl;
     RWBloque::ActualizarBloques(page.getPageId(), page.getSize());
     RWBloque::ActualizarBloque(page.getPageId(),page.getName(),page.getCabeceraSpaciosPage(),page.getContent());
+    RWBloque::ActializarSectores(page.getName(),page.getContent(),page.getTamanio(),page.getNumRegistros());
 }
 
 void diskSpaceManager::SetPageContent(int id) {
