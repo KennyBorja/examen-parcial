@@ -15,7 +15,7 @@
 
 
 using namespace std;
-// kenny borja
+
 //lee y extrae rutas
 class FileManager {
 public:
@@ -219,7 +219,6 @@ public:
 
 };
 
-//kenny borja | jose paredes
 //crea disco carpetas y txt
 class SimuladorDisco
 {
@@ -463,7 +462,7 @@ public:
 
 };
 
-// kenny borja | jose paredes
+
 
 class DatabaseManagementSystem {
 private:
@@ -562,10 +561,73 @@ public:
     void deleteReg(int pageID, int regID){
         BfManger.deleteReg(pageID, regID);
     }
+
+
+    void opcionesBufferManager(){
+        int opcion;
+        do
+        {
+            std::cout << "\n--- Buffer Manager ---" << std::endl;
+            std::cout << "1. pin pagina" << std::endl;
+            std::cout << "2. unpin pagina" << std::endl;
+            std::cout << "3. destruir procceso" << std::endl;
+            std::cout << "4. mostrar frames" << std::endl;
+            std::cout << "5. Mostrar página y bloque" << std::endl;
+            std::cout << "6. Eliminar registro" << std::endl;
+            std::cout << "7. Salir" << std::endl;
+            std::cout << "Seleccione una opción: ";
+            std::cin >> opcion;
+
+            switch (opcion)
+            {
+            case 1:{
+                cout<<"id pagina: ";
+                int id;
+                cin>>id;
+                BfManger.pinPage(id);
+                break;
+            }
+                
+            case 2:{
+                cout<<"id pagina: ";
+                int id2;
+                cin>>id2;
+                BfManger.unpinPage(id2);
+                break;
+
+            }
+                
+            case 3:{
+                 cout<<"id pagina: ";
+                int id3;
+                cin >> id3;
+                BfManger.killProcess(id3);
+                break;
+            }
+               
+            case 4:{
+                BfManger.printTableFrame();
+                break;
+            }
+                
+                
+            case 5:
+                
+                break;
+            case 6:
+                
+                break;
+            default:
+                std::cout << "\nOpción inválida. Intente nuevamente." << std::endl;
+            }
+        } while (opcion != 7);
+    
+    }
+
+
+
 };
 
-
-// jose paredes
 
 
 class Menu
@@ -588,8 +650,8 @@ public:
         {
             std::cout << "\n--- Menú ---" << std::endl;
             std::cout << "1. Agregar esquema" << std::endl;
-            std::cout << "2. Agregar esquema desde csv" << std::endl;
-            std::cout << "3. Agregar datos por teclado a esquema" << std::endl;
+            std::cout << "2. Agregar datos por teclado a esquema" << std::endl;
+            std::cout << "3. pin-kill pagina" << std::endl;
             std::cout << "4. cargar bloque" << std::endl;
             std::cout << "5. agregar registros a pagina" << std::endl;
             std::cout << "6. guardar page" << std::endl;
@@ -606,10 +668,10 @@ public:
                 agregarEsquema();
                 break;
             case 2:
-                agregarEsquemaDesdeCSV();
+                agregarDatosPorTeclado();
                 break;
             case 3:
-                agregarDatosPorTeclado();
+                pinUnpinKill();
                 break;
             case 4:
                 CargarBloque();
@@ -649,13 +711,11 @@ public:
         RWesquema::IngresarEsquema(nombreTabla);
     }
 
-    void agregarEsquemaDesdeCSV()
+    void pinUnpinKill()
     {
         system("cls");
-        std::string nombreTabla;
-        std::cout << "Ingrese el nombre del archivo: ";
-        std::cin >> nombreTabla;
-        RWesquema::GuardarEsquemaDesdeArchivo(nombreTabla);
+        pruev.opcionesBufferManager();
+        
     }
 
     void agregarDatosPorTeclado()

@@ -1,6 +1,6 @@
 #ifndef RWBLOQUE_H
 #define RWBLOQUE_H
-
+#include <vector>
 
 #include "RWhelper.h"
 
@@ -172,7 +172,9 @@ static string bloqueConEspacio(int pesoRegistro, string const &nombreTabla)
         getline(ss, pesoActual, '-');
         return stoi(pesoActual);
     }
-//jose paredes
+
+    
+
     static void ActualizarBloques(int Bloque,int totalPeso )
     {
 
@@ -207,7 +209,7 @@ static string bloqueConEspacio(int pesoRegistro, string const &nombreTabla)
         std::rename("temp.txt", "bloques.txt");
 
     }
-//jose paredes
+
     static void ActualizarBloque(int blockID, string Ruta, string Cabecera, string content)
 {
      // Definir la ruta del archivo en la subcarpeta "disk/bloques/"
@@ -225,8 +227,10 @@ static string bloqueConEspacio(int pesoRegistro, string const &nombreTabla)
     archivoSalida << content << endl;
     archivoSalida.close();
 }
-//kenny borja
-     static void ActializarSectores(const std::string& rutas, const std::string& content, int tamanioreg, int numreg)
+
+
+
+    static void ActializarSectores(const std::string& rutas, const std::string& content, int tamanioreg, int numreg)
     {
         vector <string> rutasVector;
         istringstream ss(rutas);
