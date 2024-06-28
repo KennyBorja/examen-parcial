@@ -6,7 +6,7 @@
 #include "../include/BufferPool.h"
 #include "../include/Frame.h"
 #include "../include/diskSpaceManager.h"
-
+/*Jose Paredes*/
 using namespace std;
 
 BufferPool::BufferPool() {
