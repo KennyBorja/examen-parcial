@@ -1,5 +1,5 @@
 #include "../include/diskSpaceManager.h"
-
+/*Kenny Borja*/
 
 bool diskSpaceManager::BuscarBloque(int id) {
     ifstream archivo("bloques.txt");
